@@ -33,4 +33,4 @@ if __name__ == '__main__':
     print(string_8.replace_char('Hello, Sunshine... This ia a good day. Right?'))
     print('=' * 40)
     string_9.main('Hello, Sunshine')
-    print(string_5.main('Hellо, friеnd', 'Hоw arе уou?' ))
+    print(string_5.main('Hellо, friеnd', 'Hоw arе уu?' ))
