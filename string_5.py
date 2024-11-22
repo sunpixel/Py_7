@@ -8,22 +8,38 @@ def main(*a):
     'А': 'A', 'В': 'B', 'Е': 'E', 'К': 'K', 'М': 'M', 'Н': 'H', 'О': 'O', 'Р': 'P', 'С': 'C', 'Т': 'T', 'У': 'Y', 'Х': 'X',
     'а': 'a', 'е': 'e', 'о': 'o', 'р': 'p', 'с': 'c', 'у': 'y', 'х': 'x'
     }
-    count = 0
-    acount = 0
+    result = []
     word = True
     x = list(map(lambda x: x, a))
     for i in x:
+        lis = []
+        xy = 0
         for k in i:
-            if word == True:
+            if word is True:
                 if k in cyrillic_to_latin.values():
-#                    print(k)
-                    count += 1
-                    acount += 1
                     word = False
+                    xy += 1
+                    if len(lis) == 0:
+                        lis.append(i)
+                    if len(lis) == 1:
+                        lis.append(xy)
+                    if len(lis) == 2:
+                        lis[1] = xy
+
             else:
                 if k in cyrillic_to_latin.values():
 #                    print(k)
-                    acount += 1
+                    xy += 1
+                    lis[1] = xy
                 if k == ' ':
                     word = True
-    return f'Total number of words conatining non cyrilic symbols is: {count}. Total number of cyrilic symbols is: {acount}'
+        if len(lis) != 0:
+            result.append(lis)
+
+    print(result)
+    string = ''
+    for i in result:
+        for k in i:
+            string = string + str(k) + '\t'
+        string = string + '\n'
+    return string

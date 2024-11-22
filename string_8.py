@@ -3,9 +3,14 @@
 def replace_char(a):
     '''replaces a certain char in a string'''
     char = ['.', '?', '!']
-    for i in a:
-        if i in char:
-            a = a.replace(i, '\n')
-    a = a.strip()
-    a = ' ' + a
-    return a
+    x = 0
+    string = ''
+    a = list(a)
+    while x < len(a) - 1:
+        if a[x] in char and a[x+1] != a[x]:
+            a[x] = '\n'
+        string += a[x]
+        x += 1
+    string = string.replace('.', '')
+    string = ' ' + string
+    return string
